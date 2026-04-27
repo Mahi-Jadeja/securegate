@@ -643,14 +643,14 @@ def main():
         else:
             process_scenario = dict(selected_scenario)
             # ── Ensure video is available (download if needed) ──
-            from src.video_manager import ensure_video_available
-            actual_path = ensure_video_available(
+        from src.video_manager import ensure_video_available
+        actual_path = ensure_video_available(
                 process_scenario["video_path"]
-            )
-            if actual_path is None:
-                st.error("❌ Video not available. Check Google Drive link.")
-                st.stop()
-            process_scenario["video_path"] = actual_path
+        )
+        if actual_path is None:
+            st.error("❌ Video not available. Check Google Drive link.")
+            st.stop()
+        process_scenario["video_path"] = actual_path
 
         processor     = VideoProcessor(scenario=process_scenario)
         src           = process_scenario.get("source", "")
