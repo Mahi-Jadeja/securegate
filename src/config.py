@@ -91,14 +91,31 @@ ALARM_COOLDOWN = float(os.getenv("ALARM_COOLDOWN", "10.0"))
 import os
 
 def _get_secret(key: str, default: str = "") -> str:
-    """Read from Streamlit secrets if available, else .env"""
+    """
+    Read from Streamlit secrets if available, else .env file.
+    Safe to call at module import time.
+    """
+    # First try environment variable (works everywhere)
+    env_val = os.getenv(key, "")
+    if env_val:
+        return env_val
+
+    # Then try Streamlit secrets (only works inside running app)
     try:
         import streamlit as st
-        return st.secrets.get(key, os.getenv(key, default))
+        # Use hasattr check to avoid errors during import
+        if hasattr(st, "secrets"):
+            val = st.secrets.get(key, default)
+            return str(val) if val is not None else default
     except Exception:
-        return os.getenv(key, default)
+        pass
 
-EMAIL_ENABLED  = _get_secret("EMAIL_ENABLED", "false").lower() == "true"
+    return default
+
+
+# Read email settings safely
+# These read from .env locally and Streamlit secrets on cloud
+EMAIL_ENABLED  = _get_secret("EMAIL_ENABLED",  "false").lower() == "true"
 EMAIL_SENDER   = _get_secret("EMAIL_SENDER",   "")
 EMAIL_PASSWORD = _get_secret("EMAIL_PASSWORD", "")
 EMAIL_RECEIVER = _get_secret("EMAIL_RECEIVER", "")
