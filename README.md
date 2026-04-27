@@ -43,7 +43,7 @@ The system processes surveillance video in real time, tracks all persons using B
 
 </div>
 
-> **Live app:** [securegate.streamlit.app](https://YOUR_APP_URL.streamlit.app)
+> **Live app:** [securegate.streamlit.app](https://securegate-nsu6l5vod73akyasgoufvm.streamlit.app/)
 
 ---
 
@@ -420,7 +420,7 @@ This project was submitted as a final year B.Tech project in the Department of A
 
 **Title:** Real-Time Tailgating Detection at Access-Controlled Entry Points Using Spatio-Temporal Analysis on Monocular Surveillance Video
 
-**Report:** Available in `docs/` directory
+**Report:** Available in `research_report/` directory
 
 ## 🙏 Acknowledgements
 
@@ -454,6 +454,6 @@ copies or substantial portions of the Software.
 
 **Built with ❤️ for security research**
 
-[🔴 Live Demo](https://YOUR_APP_URL.streamlit.app) • [🐛 Report Bug](https://github.com/YOUR_USERNAME/securegate/issues) • [💬 Discuss](https://github.com/YOUR_USERNAME/securegate/discussions)
+[🔴 Live Demo](https://securegate-nsu6l5vod73akyasgoufvm.streamlit.app/) • [🐛 Report Bug](https://github.com/Mahi-Jadeja/securegate/issues) • [💬 Discuss](https://github.com/Mahi-Jadeja/securegate/discussions)
 
 </div>
