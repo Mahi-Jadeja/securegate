@@ -12,7 +12,7 @@
 
 *Using Spatio-Temporal Analysis on Monocular Surveillance Video*
 
-[Live Demo](https://YOUR_APP_URL.streamlit.app) • [Report](docs/) • [Dataset](#dataset)
+[Live Demo](https://securegate-nsu6l5vod73akyasgoufvm.streamlit.app/) • [Report](research_report/CV_GROUP_15.pdf) • [Dataset](#dataset)
 
 </div>
 
