@@ -1,0 +1,54 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Environment (NEVER upload this - contains passwords)
+.env
+
+# Video data (too large for GitHub)
+data/
+
+# AI model weights
+*.pt
+*.pth
+
+# Results
+results/
+
+# Mac system files
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Virtual environment
+venv/
+.venv/
+
+# Video files (too large for GitHub)
+data/chokepoint/
+data/self_recorded/
+data/youtube/
+data/cache/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Mac files
+.DS_Store
+
+# Model weights (auto-downloads)
+*.pt
+
+# Environment variables
+.env
+
+# Temp files
+*.tmp
+tempfile*
