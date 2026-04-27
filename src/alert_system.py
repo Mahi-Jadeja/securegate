@@ -10,6 +10,7 @@
 # OUTPUT: Sound plays + Email sent + Event logged
 # ═══════════════════════════════════════════════════════════
 
+import os
 import time
 import smtplib
 import ssl
@@ -58,28 +59,21 @@ class AlertSystem:
         print(f"   Alarm cooldown:  {ALARM_COOLDOWN}s")
 
     def _init_sound(self):
-        """
-        Try to initialize pygame mixer for alarm sound.
-        If it fails (no audio device), we gracefully skip sound.
-        """
+        """Initialize sound — silently fails on servers."""
+        self.sound_available = False
         try:
             import pygame
-            # Initialize mixer with explicit format settings
             pygame.mixer.pre_init(
-                frequency=44100,
-                size=-16,        # 16-bit signed
-                channels=1,      # mono
-                buffer=512
+                frequency=44100, size=-16, channels=1, buffer=512
             )
             pygame.mixer.init()
-            self.alarm_sound = pygame.mixer.Sound(ALARM_SOUND_PATH)
-            self.sound_available = True
-            self.pygame = pygame
-        except Exception as e:
-            # Sound failed to initialize — common on servers/CI environments
-            # We just skip sound and continue
-            print(f"   ⚠️  Sound not available: {e}")
-            self.sound_available = False
+            if os.path.exists(ALARM_SOUND_PATH):
+                self.alarm_sound = pygame.mixer.Sound(ALARM_SOUND_PATH)
+                self.sound_available = True
+                self.pygame = pygame
+        except Exception:
+            # Sound not available on server — email alert still works
+            pass
 
     def trigger_tailgate_alert(self, event_details: dict) -> dict:
         """
